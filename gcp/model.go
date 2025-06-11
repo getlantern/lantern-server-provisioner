@@ -2,8 +2,9 @@ package gcp
 
 import (
 	"fmt"
-	"github.com/getlantern/lantern-server-privisioner/common"
 	"strings"
+
+	"github.com/getlantern/lantern-server-provisioner/common"
 )
 
 // --- Error Types ---

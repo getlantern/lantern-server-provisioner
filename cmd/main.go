@@ -7,8 +7,8 @@ import (
 
 	"github.com/pterm/pterm"
 
-	"github.com/getlantern/lantern-server-privisioner/common"
-	"github.com/getlantern/lantern-server-privisioner/digitalocean"
+	"github.com/getlantern/lantern-server-provisioner/common"
+	"github.com/getlantern/lantern-server-provisioner/digitalocean"
 )
 
 func testProvisioner(ctx context.Context, p common.Provisioner) {

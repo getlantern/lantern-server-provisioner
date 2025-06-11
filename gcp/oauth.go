@@ -4,12 +4,13 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/getlantern/lantern-server-privisioner/common"
 	"log/slog"
 	"net"
 	"net/http"
 	"sync"
 	"time"
+
+	"github.com/getlantern/lantern-server-provisioner/common"
 
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"

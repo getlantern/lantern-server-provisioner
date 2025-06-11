@@ -2,8 +2,9 @@ package digitalocean
 
 import (
 	"context"
-	"github.com/getlantern/lantern-server-privisioner/common"
 	"log/slog"
+
+	"github.com/getlantern/lantern-server-provisioner/common"
 )
 
 type Provisioner struct {

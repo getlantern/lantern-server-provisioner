@@ -1,9 +1,10 @@
 package digitalocean
 
 import (
-	"github.com/getlantern/lantern-server-privisioner/common"
 	"strings"
 	"time"
+
+	"github.com/getlantern/lantern-server-provisioner/common"
 )
 
 // GetID implements the CloudLocation interface.

@@ -17,7 +17,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/getlantern/lantern-server-privisioner/common"
+	"github.com/getlantern/lantern-server-provisioner/common"
 )
 
 // RegisteredRedirect represents a pre-registered client ID and port combination.
