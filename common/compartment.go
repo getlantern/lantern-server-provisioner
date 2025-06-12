@@ -37,6 +37,9 @@ func CompartmentEntryLocations(entry *CompartmentEntry) []string {
 	locations := make([]string, 0)
 	for _, e := range entry.Locations {
 		loc := e.GetLocation()
+		if loc == nil {
+			continue // skip if location is nil
+		}
 		locations = append(locations, fmt.Sprintf("%s - %s [%s]", e.GetID(), loc.ID, loc.CountryCode))
 	}
 	return locations
