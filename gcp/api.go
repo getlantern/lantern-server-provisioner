@@ -14,6 +14,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/getlantern/lantern-server-provisioner/common"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
 )
@@ -632,12 +633,9 @@ func CreateFirewallIfNeeded(ctx context.Context, client *APIClient, projectID st
 	slog.Info("Firewall created successfully", "operationName", op.Name)
 	return nil
 }
-func makeGcpInstanceName() string {
-	now := time.Now().UTC()
-	return fmt.Sprintf("lantern-%s-%s", now.Format("20060102"), now.Format("150405"))
-}
+
 func CreateInstance(ctx context.Context, client *APIClient, projectID string, zoneID string, publicSSHKey string) (string, string, error) {
-	name := makeGcpInstanceName()
+	name := common.MakeInstanceName()
 	instance := Instance{
 		Name:        name,
 		MachineType: fmt.Sprintf("zones/%s/machineTypes/%s", zoneID, machineSize),

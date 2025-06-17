@@ -89,7 +89,8 @@ func (p *Provisioner) Provision(ctx context.Context, placementID string, locatio
 			return
 		}
 
-		if di, err := p.client.CreateDroplet(ctx, "tt1", "nyc1", publicSSHKey, DropletSpecification{
+		name := common.MakeInstanceName()
+		if di, err := p.client.CreateDroplet(ctx, name, locationID, publicSSHKey, DropletSpecification{
 			Size:  "s-1vcpu-1gb",
 			Image: "ubuntu-22-04-x64",
 		}); err != nil {

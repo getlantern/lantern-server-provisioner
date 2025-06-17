@@ -1,6 +1,9 @@
 package common
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 // CompartmentEntry represents an entry in a compartment, such as a project with associated cloud locations
 type CompartmentEntry struct {
@@ -71,4 +74,9 @@ func CompartmentEntryByID(entries []CompartmentEntry, id string) *CompartmentEnt
 		}
 	}
 	return nil
+}
+
+func MakeInstanceName() string {
+	now := time.Now().UTC()
+	return fmt.Sprintf("lantern-%s-%s", now.Format("20060102"), now.Format("150405"))
 }
