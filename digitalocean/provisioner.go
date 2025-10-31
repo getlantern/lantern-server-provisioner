@@ -2,6 +2,7 @@ package digitalocean
 
 import (
 	"context"
+	"fmt"
 	"log/slog"
 
 	"github.com/getlantern/lantern-server-provisioner/common"
@@ -20,6 +21,8 @@ func GetProvisioner(ctx context.Context, browserStart common.BrowserOpener) *Pro
 	}
 }
 
+var ErrAccountNotActive = fmt.Errorf("account is not active, check your account billing status.")
+
 func (p *Provisioner) Validate(ctx context.Context, token string) {
 	p.client = NewRestApiSession(token, nil)
 	go func(resultChan chan<- common.Event) {
@@ -30,6 +33,11 @@ func (p *Provisioner) Validate(ctx context.Context, token string) {
 		if err != nil {
 			slog.Error("Failed to get account info with token", "err", err)
 			resultChan <- common.Event{Type: common.EventTypeValidationError, Error: err}
+			return
+		}
+
+		if account.Status != "active" {
+			resultChan <- common.Event{Type: common.EventTypeValidationError, Error: ErrAccountNotActive}
 			return
 		}
 
