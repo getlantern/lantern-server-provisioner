@@ -39,8 +39,9 @@ not images that need cloud-init disk setup to finish before system initializatio
 
 Installation succeeds only after the local HTTPS health endpoint responds and
 the manager, proxy, and firewall services are all active. The loopback health
-probe runs through authenticated SSH and skips certificate hostname verification
-because the server certificate is issued for the instance's public IP.
+probe runs through authenticated SSH and disables TLS certificate verification,
+including certificate authority and hostname checks, only for the loopback
+request because the server certificate is issued for the instance's public IP.
 
 ## Extending
 

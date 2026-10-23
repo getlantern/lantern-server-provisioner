@@ -134,7 +134,7 @@ func InstallServer(ip string, privateSSHKey string, username string) (*ServerCon
 	}
 	// Probe over the authenticated SSH connection. TLS verification is skipped
 	// only for this loopback request, whose certificate is for the public IP.
-	if _, err := runSSHCommand(client, fmt.Sprintf("curl --insecure --fail --silent --show-error --retry 30 --retry-all-errors --retry-delay 2 --retry-max-time 120 --max-time 5 https://127.0.0.1:%d/api/v1/health", config.Port)); err != nil {
+	if _, err := runSSHCommand(client, fmt.Sprintf("curl --insecure --fail --silent --show-error --retry 60 --retry-all-errors --retry-delay 2 --retry-max-time 120 --max-time 5 https://127.0.0.1:%d/api/v1/health", config.Port)); err != nil {
 		return nil, fmt.Errorf("server API did not become ready: %w", err)
 	}
 	for _, service := range []string{"lantern-server-manager", "sing-box-extensions", "firewalld"} {
